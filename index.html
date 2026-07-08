@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ярослав — личный центр дел</title>
-<meta name="description" content="Личная страница Ярослава: рынок, контент-план, тренировки и проекты в одном месте.">
+<title id="pageTitle">Ярослав — личный центр дел</title>
+<meta id="pageDescription" name="description" content="Личная страница Ярослава: рынок, контент-план, тренировки и проекты в одном месте.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,15 +18,15 @@
 
 <header class="card-header">
   <div class="wrap">
-    <div class="index-mark">№ 01 · <span id="todayStamp"></span></div>
-    <h1 class="name">Ярослав</h1>
-    <p class="tagline" id="tagline">Личный центр дел</p>
+    <div class="index-mark"><span id="indexMark">№ 01</span> · <span id="todayStamp"></span></div>
+    <h1 class="name" id="siteName">Ярослав</h1>
+    <p class="tagline" id="tagline"></p>
   </div>
 </header>
 
 <section class="market wrap" aria-label="Курсы криптовалют">
   <div class="market__head">
-    <span class="market__label">Топ-5 крипто</span>
+    <span class="market__label" id="marketLabel">Топ-5 крипто</span>
     <span class="market__updated" id="marketUpdated">загрузка…</span>
   </div>
   <div class="market__row" id="marketRow"></div>
@@ -38,12 +38,12 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <p>Правки вносятся в <code>data.js</code> — сохрани и опубликуй заново на GitHub.</p>
-    <p class="quiet">Быстрые пометки, добавленные кнопкой ниже, хранятся только в этом браузере.</p>
+    <p id="footerNote"></p>
+    <p class="quiet" id="footerQuiet"></p>
   </div>
 </footer>
 
-<button class="quick-add" id="quickAddBtn" title="Быстро добавить ссылку (сохранится только в этом браузере)">+ ссылка</button>
+<button class="quick-add" id="quickAddBtn" title="Быстро добавить ссылку (сохранится только в этом браузере)"></button>
 
 <script src="data.js"></script>
 <script src="script.js"></script>

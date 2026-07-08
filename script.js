@@ -138,8 +138,21 @@
     }
   }
 
+  function renderStaticTexts() {
+    document.title = SITE_DATA.pageTitle;
+    document.getElementById("pageDescription").setAttribute("content", SITE_DATA.pageDescription);
+    document.getElementById("siteName").textContent = SITE_DATA.name;
+    document.getElementById("tagline").textContent = SITE_DATA.tagline;
+    document.getElementById("indexMark").textContent = SITE_DATA.indexMark;
+    document.getElementById("marketLabel").textContent = SITE_DATA.marketLabel;
+    document.getElementById("quickAddBtn").textContent = SITE_DATA.quickAddButton;
+    document.getElementById("footerNote").innerHTML =
+      escapeHtml(SITE_DATA.footer.note).replace(/data\.js/g, "<code>data.js</code>");
+    document.getElementById("footerQuiet").textContent = SITE_DATA.footer.quiet;
+  }
+
   document.getElementById("todayStamp").textContent = todayStamp();
-  document.getElementById("tagline").textContent = SITE_DATA.tagline;
+  renderStaticTexts();
   renderTicker();
   renderSections();
   fetchCrypto();

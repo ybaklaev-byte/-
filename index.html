@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ярослав — личный центр дел</title>
+<meta name="description" content="Личная страница Ярослава: рынок, контент-план, тренировки и проекты в одном месте.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ticker" aria-label="Фокус недели">
+  <div class="ticker__track" id="tickerTrack"></div>
+</div>
+
+<header class="card-header">
+  <div class="wrap">
+    <div class="index-mark">№ 01 · <span id="todayStamp"></span></div>
+    <h1 class="name">Ярослав</h1>
+    <p class="tagline" id="tagline">Личный центр дел</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="sections-grid" id="sectionsGrid" aria-label="Разделы"></section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Правки вносятся в <code>data.js</code> — сохрани и опубликуй заново на GitHub.</p>
+    <p class="quiet">Быстрые пометки, добавленные кнопкой ниже, хранятся только в этом браузере.</p>
+  </div>
+</footer>
+
+<button class="quick-add" id="quickAddBtn" title="Быстро добавить ссылку (сохранится только в этом браузере)">+ ссылка</button>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

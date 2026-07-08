@@ -98,9 +98,51 @@
     renderSections();
   }
 
+  const CRYPTO_IDS = ["bitcoin", "ethereum", "tether", "ripple", "binancecoin"];
+  const CRYPTO_API =
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" +
+    CRYPTO_IDS.join(",") +
+    "&order=market_cap_desc&price_change_percentage=24h";
+
+  function formatPrice(n) {
+    if (n >= 1) return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 2 });
+    return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 4 });
+  }
+
+  async function fetchCrypto() {
+    const row = document.getElementById("marketRow");
+    const updated = document.getElementById("marketUpdated");
+    try {
+      const res = await fetch(CRYPTO_API);
+      if (!res.ok) throw new Error("bad response");
+      const coins = await res.json();
+
+      row.innerHTML = coins
+        .map((c) => {
+          const change = c.price_change_percentage_24h;
+          const changeClass = change >= 0 ? "up" : "down";
+          const changeSign = change >= 0 ? "▲" : "▼";
+          return `
+          <div class="market__item">
+            <span class="market__symbol">${escapeHtml(c.symbol.toUpperCase())}</span>
+            <span class="market__price">${formatPrice(c.current_price)}</span>
+            <span class="market__change ${changeClass}">${changeSign} ${Math.abs(change).toFixed(2)}%</span>
+          </div>`;
+        })
+        .join("");
+
+      updated.textContent = "обновлено " + new Date().toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+    } catch (e) {
+      row.innerHTML = `<div class="market__error">Не удалось загрузить курсы (нет сети или лимит запросов API).</div>`;
+      updated.textContent = "ошибка загрузки";
+    }
+  }
+
   document.getElementById("todayStamp").textContent = todayStamp();
   document.getElementById("tagline").textContent = SITE_DATA.tagline;
   renderTicker();
   renderSections();
+  fetchCrypto();
+  setInterval(fetchCrypto, 60000);
   document.getElementById("quickAddBtn").addEventListener("click", openQuickAdd);
 })();
